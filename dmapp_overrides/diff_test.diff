@@ -1,0 +1,177 @@
+Index: barrier_deletion.cpp
+===================================================================
+--- barrier_deletion.cpp	(revision 34)
++++ barrier_deletion.cpp	(working copy)
+@@ -138,6 +138,7 @@
+         uint64_t reSync;
+         uint64_t badDecison;
+         uint64_t lastParticipatedBarrier;
++        uint64_t lastBarrierSeenKey;
+         uint64_t systemPageSize;
+         
+         void * stackBottom;
+@@ -379,7 +380,7 @@
+         }
+     }
+     __thread bool gAccessedRemoteData;
+-    __thread int  gDisableAnalysis = 0;
++    __thread bool gRemoteGetSeen = true;
+     
+ #define SKIP (10)
+ #define PARTICIPATE (0)
+@@ -807,6 +808,7 @@
+         //assert(recvBuf == curBarrierInstance);
+         // Exit
+         gAccessedRemoteData = false;
++        gRemoteGetSeen = false;
+     }
+     
+     
+@@ -901,6 +903,7 @@
+             
+             // Exit
+             gAccessedRemoteData = false;
++            gRemoteGetSeen = false;
+             //assert(recvBuf == curBarrierInstance);
+         }
+     }
+@@ -925,13 +928,19 @@
+ #endif
+         assert(ALL_REDUCE_GET_INSTANCE(recvBuf)  == GLOBAL_STATE.GetBarrierInstance());
+         
+-        if(ALL_REDUCE_GET_STATUS(recvBuf) == newVal && ! gDisableAnalysis) {
++        if(ALL_REDUCE_GET_STATUS(recvBuf) == newVal) {
+             GLOBAL_STATE.barrierSkipCache[key] = newVal;
+         } else {
+             GLOBAL_STATE.barrierSkipCache[key] = PARTICIPATE;
+             Log(comm, key, "VetoInDecison:", curBarrierInstance, gAccessedRemoteData);
+         }
+-        
++
++        // if a get seen, force PARTICIPATE on the previous barrier
++        if (gRemoteGetSeen && GLOBAL_STATE.lastBarrierSeenKey) {
++            GLOBAL_STATE.barrierSkipCache[GLOBAL_STATE.lastBarrierSeenKey] = PARTICIPATE;
++            gRemoteGetSeen = false;
++        }
++
+         // reset gAccessedRemoteData to false since we just did a barrier.
+         gAccessedRemoteData = false;
+     }
+@@ -960,10 +969,16 @@
+         assert(ALL_REDUCE_GET_INSTANCE(recvBuf)  == GLOBAL_STATE.GetBarrierInstance());
+         GLOBAL_STATE.barrierSkipCache[key] = ALL_REDUCE_GET_STATUS(recvBuf);
+         
+-        if(ALL_REDUCE_GET_STATUS(recvBuf) == PARTICIPATE && ! gDisableAnalysis) {
++        if(ALL_REDUCE_GET_STATUS(recvBuf) == PARTICIPATE) {
+             gAccessedRemoteData = false;
+             Log(comm, key, "VetoOnFirstRound:", curBarrierInstance, gAccessedRemoteData);
+         }
++
++        // if a get seen, force PARTICIPATE on the previous barrier
++        if (gRemoteGetSeen && GLOBAL_STATE.lastBarrierSeenKey) {
++            GLOBAL_STATE.barrierSkipCache[GLOBAL_STATE.lastBarrierSeenKey] = PARTICIPATE;
++            gRemoteGetSeen = false;
++        }
+     }
+     
+     static struct timeval t1, t2;
+@@ -1103,7 +1118,7 @@
+         
+         RedundancyKey rKey = {/* last barrier = */ 0, /*cur barrier =*/ key};
+         
+-        if(ALL_REDUCE_GET_STATUS(recvBuf) == POTENTIAL_SKIP /* TODO... do we need this ?&& ! gDisableAnalysis */) {
++        if(ALL_REDUCE_GET_STATUS(recvBuf) == POTENTIAL_SKIP) {
+             // if it is not in participate map, record in redundancy map.
+             if (participatedBarriersMap.find(key) == participatedBarriersMap.end())
+                 RecordInRedundancyMap(rKey);
+@@ -1226,7 +1241,8 @@
+         } else {
+             HandleFirstVisit(comm, key, curBarrierInstance, retVal);
+         }
+-        
++
++        GLOBAL_STATE.lastBarrierSeenKey = key;
+         return retVal;
+     }
+     
+Index: build.sh
+===================================================================
+--- build.sh	(revision 34)
++++ build.sh	(working copy)
+@@ -1,12 +1,12 @@
+ set -ex
+ CFLAGS=-O3
+-GOOGLE_SPARSE_HASH_PATH=/global/homes/m/mc29/experiments/sparsehash-2.0.2-install/
+-LIB_UNWIND_PATH=/global/u2/m/mc29/software/libunwind-1.1-install/
++GOOGLE_SPARSE_HASH_PATH=/global/homes/w/wlav/milind/sparsehash/
++LIB_UNWIND_PATH=/global/homes/w/wlav/milind/libunwind/
+ CC -c -g $CFLAGS barrier_deletion.cpp -I$GOOGLE_SPARSE_HASH_PATH/include -I$LIB_UNWIND_PATH/include -fno-omit-frame-pointer
+ #gcc -E -B -c test.c -o dmapp_wrapped.E -I/opt/cray/dmapp/7.0.1-1.0501.8315.8.4.ari/include  -I/opt/cray/gni-headers/3.0-1.0501.8317.12.1.ari/include
+ CC -E -B -c test.c -o dmapp_wrapped.E 
+ python dmapp-wrapper.py dmapp_wrapped.E  dmapp_wrapped.c  wrap_scrpt
+ CC -c -g $CFLAGS dmapp_wrapped.c -o dmapp_wrapped.o 
+-cd ~/nwchem-6.3_opt/src/
++cd /global/homes/w/wlav/milind/nwchem-6.3/src/
+ sh build_barrier_deletion.sh
+ cd -
+Index: barrier_deletion.h
+===================================================================
+--- barrier_deletion.h	(revision 34)
++++ barrier_deletion.h	(working copy)
+@@ -13,7 +13,7 @@
+ 
+ extern "C" {
+     extern __thread bool gAccessedRemoteData;
+-    extern __thread int  gDisableAnalysis;
++    extern __thread bool gRemoteGetSeen;
+     extern void enable_barrier_optimization_();
+     extern void disable_barrier_optimization_();
+     extern void disable_and_cleanup_barrier_optimization_();
+Index: dmapp-wrapper.py
+===================================================================
+--- dmapp-wrapper.py	(revision 34)
++++ dmapp-wrapper.py	(working copy)
+@@ -63,14 +63,10 @@
+         fp.write('extern ' + sig[0] +  ' REAL_FUNCTION(' +  sig[1] + ') (' + sig[2] + ') ;\n' )
+         fp.write(sig[0] +  ' WRAPPED_FUNCTION(' +  sig[1] + ') (' + sig[2] + ') {\n' )
+ 
+-        if 3 < len(sig) and sig[3]:
+-            fp.write('\t gDisableAnalysis += 1;\n')
+-            fp.write('\t ')
+-            if sig[0] != 'void':
+-               fp.write(sig[0] + ' result = ')
+-        else:
+-	    fp.write('\t gAccessedRemoteData = true;\n')
+-            fp.write('\t return ')
++        if 'get' in sig[1] or 'ga_zero' in sig[1]:
++            fp.write('\t gRemoteGetSeen = true;\n')
++        fp.write('\t gAccessedRemoteData = true;\n')
++        fp.write('\t return ')
+ 
+         fp.write('REAL_FUNCTION(' + sig[1] + ')(') 
+  
+@@ -88,11 +84,6 @@
+ 
+         fp.write( ');\n')
+ 
+-        if 3 < len(sig) and sig[3]:
+-            fp.write('\t gDisableAnalysis -= 1;\n')
+-            if sig[0] != 'void':
+-                fp.write('\t return result;\n')
+- 
+         fp.write('}\n')
+     fp.write('}\n')
+     fp.close();
+@@ -125,11 +116,7 @@
+     	#print last
+     signatures.append((funcPrefix, funcName, noDefaultArgs))
+ 
+-# add a few GA APIs for the benefit of GA_Zero
+-signatures.append(('void', 'pnga_access_ptr', 'int g_a, int lo[], int hi[], void* ptr, int ld[]'))
+-signatures.append(('void', 'pnga_access_block_segment_ptr', 'int g_a, int proc, void* ptr, int *len'))
+-
+-# GA_Zero itself
++# explicitly add GA_Zero
+ signatures.append(('void', 'ga_zero_', 'int g_a', True))
+ 
+ WriteDMAPPFunctionWrapper(generatedWrapperFile, signatures)

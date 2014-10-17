@@ -1,0 +1,60 @@
+Index: barrier_deletion.cpp
+===================================================================
+--- barrier_deletion.cpp	(revision 22)
++++ barrier_deletion.cpp	(working copy)
+@@ -91,6 +91,17 @@
+ #endif
+     
+     struct GLOBAL_STATE_t {
++        GLOBAL_STATE_t() {
++            barrierInstance = 0;
++            enabledBarrierInstance = 0;
++            skippable = 0;
++            reSync = 0;
++            badDecison = 0;
++            lastParticipatedBarrier = 0;
++            stackBottom = NULL;
++            isEnabled = false;
++        }
++
+         dense_hash_map<uint64_t, uint64_t> barrierSkipCache;
+         dense_hash_map<uint64_t, uint64_t>::iterator barrierSkipCacheIterator;
+         uint64_t barrierInstance;
+@@ -215,6 +226,7 @@
+         }
+     }
+     __thread bool gAccessedRemoteData;
++    __thread bool is_sync = false;
+     __thread int  gDisableAnalysis = 0;
+ 
+ #define SKIP (10)
+@@ -574,6 +586,7 @@
+ 
+ 
+     static inline void SkipTheBarrier(MPI_Comm comm, uint64_t key, uint64_t curBarrierInstance, uint64_t val, int& retVal) {
++        assert( gDisableAnalysis == 0 );
+         // We had decided to skip this barrier
+         if(!gAccessedRemoteData) {
+             // The decision still holds good.
+@@ -655,6 +668,7 @@
+             GLOBAL_STATE.barrierSkipCache[key] = newVal;
+         } else {
+             GLOBAL_STATE.barrierSkipCache[key] = PARTICIPATE;
++            gAccessedRemoteData = false;
+             Log(comm, key, "VetoInDecison:", curBarrierInstance, gAccessedRemoteData);
+         }
+     }
+@@ -675,8 +689,12 @@
+         assert(ALL_REDUCE_GET_INSTANCE(recvBuf)  == GLOBAL_STATE.GetBarrierInstance());
+         GLOBAL_STATE.barrierSkipCache[key] = ALL_REDUCE_GET_STATUS(recvBuf);
+ 
+-        if(ALL_REDUCE_GET_STATUS(recvBuf) == PARTICIPATE && ! gDisableAnalysis) {
++        if (gDisableAnalysis) {
+             gAccessedRemoteData = false;
++            GLOBAL_STATE.barrierSkipCache[key] = PARTICIPATE;
++        }
++         else if(ALL_REDUCE_GET_STATUS(recvBuf) == PARTICIPATE) {
++            gAccessedRemoteData = false;
+             Log(comm, key, "VetoOnFirstRound:", curBarrierInstance, gAccessedRemoteData);
+         }
+     }

@@ -1,0 +1,1559 @@
+
+// GENERATED FILE DON'T EDIT
+#include<dmapp.h>
+#include <mpi.h>
+#include<stdbool.h>
+#include "barrier_deletion.h"
+extern int myRank;
+extern "C" {
+#define REAL_FUNCTION(name)  __real_ ## name
+#define WRAPPED_FUNCTION(name)  __wrap_ ## name
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_init) ( dmapp_rma_attrs_t *requested_attrs,
+           dmapp_rma_attrs_t *actual_attrs) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_init) ( dmapp_rma_attrs_t *requested_attrs,
+           dmapp_rma_attrs_t *actual_attrs) {
+	 if (myRank == 0) printf("dmapp_init\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_init)(requested_attrs, actual_attrs);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_init_ext) ( dmapp_rma_attrs_ext_t *requested_attrs,
+               dmapp_rma_attrs_ext_t *actual_attrs) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_init_ext) ( dmapp_rma_attrs_ext_t *requested_attrs,
+               dmapp_rma_attrs_ext_t *actual_attrs) {
+	 if (myRank == 0) printf("dmapp_init_ext\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_init_ext)(requested_attrs, actual_attrs);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_finalize) (void) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_finalize) (void) {
+	 if (myRank == 0) printf("dmapp_finalize\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_finalize)();
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_set_rma_attrs) ( dmapp_rma_attrs_t *requested_attrs,
+                    dmapp_rma_attrs_t *actual_attrs) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_set_rma_attrs) ( dmapp_rma_attrs_t *requested_attrs,
+                    dmapp_rma_attrs_t *actual_attrs) {
+	 if (myRank == 0) printf("dmapp_set_rma_attrs\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_set_rma_attrs)(requested_attrs, actual_attrs);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_set_rma_attrs_ext) ( dmapp_rma_attrs_ext_t *requested_attrs,
+                        dmapp_rma_attrs_ext_t *actual_attrs) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_set_rma_attrs_ext) ( dmapp_rma_attrs_ext_t *requested_attrs,
+                        dmapp_rma_attrs_ext_t *actual_attrs) {
+	 if (myRank == 0) printf("dmapp_set_rma_attrs_ext\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_set_rma_attrs_ext)(requested_attrs, actual_attrs);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_nb) ( void *target_addr,
+             dmapp_seg_desc_t *target_seg,
+             dmapp_pe_t target_pe,
+             void *source_addr,
+             uint64_t nelems,
+             dmapp_type_t type,
+             dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_nb) ( void *target_addr,
+             dmapp_seg_desc_t *target_seg,
+             dmapp_pe_t target_pe,
+             void *source_addr,
+             uint64_t nelems,
+             dmapp_type_t type,
+             dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_put_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_nb)(target_addr, target_seg, target_pe, source_addr, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_nbi) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              void *source_addr,
+              uint64_t nelems,
+              dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_nbi) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              void *source_addr,
+              uint64_t nelems,
+              dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_put_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_nbi)(target_addr, target_seg, target_pe, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put) ( void *target_addr,
+          dmapp_seg_desc_t *target_seg,
+          dmapp_pe_t target_pe,
+          void *source_addr,
+          uint64_t nelems,
+          dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put) ( void *target_addr,
+          dmapp_seg_desc_t *target_seg,
+          dmapp_pe_t target_pe,
+          void *source_addr,
+          uint64_t nelems,
+          dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_put\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put)(target_addr, target_seg, target_pe, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_flag_nb) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  void *source_addr,
+                  uint64_t nelems,
+                  dmapp_type_t type,
+                  void *target_flag,
+                  uint64_t flag_value,
+                  dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_flag_nb) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  void *source_addr,
+                  uint64_t nelems,
+                  dmapp_type_t type,
+                  void *target_flag,
+                  uint64_t flag_value,
+                  dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_put_flag_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_flag_nb)(target_addr, target_seg, target_pe, source_addr, nelems, type, target_flag, flag_value, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_flag_nbi) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t target_pe,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type,
+                   void *target_flag,
+                   uint64_t flag_value) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_flag_nbi) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t target_pe,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type,
+                   void *target_flag,
+                   uint64_t flag_value) {
+	 if (myRank == 0) printf("dmapp_put_flag_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_flag_nbi)(target_addr, target_seg, target_pe, source_addr, nelems, type, target_flag, flag_value);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_flag) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               uint64_t nelems,
+               dmapp_type_t type,
+               void *target_flag,
+               uint64_t flag_value) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_flag) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               uint64_t nelems,
+               dmapp_type_t type,
+               void *target_flag,
+               uint64_t flag_value) {
+	 if (myRank == 0) printf("dmapp_put_flag\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_flag)(target_addr, target_seg, target_pe, source_addr, nelems, type, target_flag, flag_value);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_get_nb) ( void *target_addr,
+             void *source_addr,
+             dmapp_seg_desc_t *source_seg,
+             dmapp_pe_t source_pe,
+             uint64_t nelems,
+             dmapp_type_t type,
+             dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_get_nb) ( void *target_addr,
+             void *source_addr,
+             dmapp_seg_desc_t *source_seg,
+             dmapp_pe_t source_pe,
+             uint64_t nelems,
+             dmapp_type_t type,
+             dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_get_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_get_nb)(target_addr, source_addr, source_seg, source_pe, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_get_nbi) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              uint64_t nelems,
+              dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_get_nbi) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              uint64_t nelems,
+              dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_get_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_get_nbi)(target_addr, source_addr, source_seg, source_pe, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_get) ( void *target_addr,
+          void *source_addr,
+          dmapp_seg_desc_t *source_seg,
+          dmapp_pe_t source_pe,
+          uint64_t nelems,
+          dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_get) ( void *target_addr,
+          void *source_addr,
+          dmapp_seg_desc_t *source_seg,
+          dmapp_pe_t source_pe,
+          uint64_t nelems,
+          dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_get\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_get)(target_addr, source_addr, source_seg, source_pe, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_get_flag_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   uint64_t nelems,
+                   dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_get_flag_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   uint64_t nelems,
+                   dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_get_flag_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_get_flag_nbi)(target_addr, source_addr, source_seg, source_pe, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iput_nb) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              void *source_addr,
+              ptrdiff_t tst,
+              ptrdiff_t sst,
+              uint64_t nelems,
+              dmapp_type_t type,
+              dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iput_nb) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              void *source_addr,
+              ptrdiff_t tst,
+              ptrdiff_t sst,
+              uint64_t nelems,
+              dmapp_type_t type,
+              dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_iput_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iput_nb)(target_addr, target_seg, target_pe, source_addr, tst, sst, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iput_nbi) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               ptrdiff_t tst,
+               ptrdiff_t sst,
+               uint64_t nelems,
+               dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iput_nbi) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               ptrdiff_t tst,
+               ptrdiff_t sst,
+               uint64_t nelems,
+               dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_iput_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iput_nbi)(target_addr, target_seg, target_pe, source_addr, tst, sst, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iput) ( void *target_addr,
+           dmapp_seg_desc_t *target_seg,
+           dmapp_pe_t target_pe,
+           void *source_addr,
+           ptrdiff_t tst,
+           ptrdiff_t sst,
+           uint64_t nelems,
+           dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iput) ( void *target_addr,
+           dmapp_seg_desc_t *target_seg,
+           dmapp_pe_t target_pe,
+           void *source_addr,
+           ptrdiff_t tst,
+           ptrdiff_t sst,
+           uint64_t nelems,
+           dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_iput\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iput)(target_addr, target_seg, target_pe, source_addr, tst, sst, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iget_nb) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              ptrdiff_t tst,
+              ptrdiff_t sst,
+              uint64_t nelems,
+              dmapp_type_t type,
+              dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iget_nb) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              ptrdiff_t tst,
+              ptrdiff_t sst,
+              uint64_t nelems,
+              dmapp_type_t type,
+              dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_iget_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iget_nb)(target_addr, source_addr, source_seg, source_pe, tst, sst, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iget_nbi) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               ptrdiff_t tst,
+               ptrdiff_t sst,
+               uint64_t nelems,
+               dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iget_nbi) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               ptrdiff_t tst,
+               ptrdiff_t sst,
+               uint64_t nelems,
+               dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_iget_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iget_nbi)(target_addr, source_addr, source_seg, source_pe, tst, sst, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_iget) ( void *target_addr,
+           void *source_addr,
+           dmapp_seg_desc_t *source_seg,
+           dmapp_pe_t source_pe,
+           ptrdiff_t tst,
+           ptrdiff_t sst,
+           uint64_t nelems,
+           dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_iget) ( void *target_addr,
+           void *source_addr,
+           dmapp_seg_desc_t *source_seg,
+           dmapp_pe_t source_pe,
+           ptrdiff_t tst,
+           ptrdiff_t sst,
+           uint64_t nelems,
+           dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_iget\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_iget)(target_addr, source_addr, source_seg, source_pe, tst, sst, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixput_nb) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               ptrdiff_t *tidx,
+               uint64_t nelems,
+               dmapp_type_t type,
+               dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixput_nb) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t target_pe,
+               void *source_addr,
+               ptrdiff_t *tidx,
+               uint64_t nelems,
+               dmapp_type_t type,
+               dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_ixput_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixput_nb)(target_addr, target_seg, target_pe, source_addr, tidx, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixput_nbi) ( void *target_addr,
+                dmapp_seg_desc_t *target_seg,
+                dmapp_pe_t target_pe,
+                void *source_addr,
+                ptrdiff_t *tidx,
+                uint64_t nelems,
+                dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixput_nbi) ( void *target_addr,
+                dmapp_seg_desc_t *target_seg,
+                dmapp_pe_t target_pe,
+                void *source_addr,
+                ptrdiff_t *tidx,
+                uint64_t nelems,
+                dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_ixput_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixput_nbi)(target_addr, target_seg, target_pe, source_addr, tidx, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixput) ( void *target_addr,
+            dmapp_seg_desc_t *target_seg,
+            dmapp_pe_t target_pe,
+            void *source_addr,
+            ptrdiff_t *tidx,
+            uint64_t nelems,
+            dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixput) ( void *target_addr,
+            dmapp_seg_desc_t *target_seg,
+            dmapp_pe_t target_pe,
+            void *source_addr,
+            ptrdiff_t *tidx,
+            uint64_t nelems,
+            dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_ixput\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixput)(target_addr, target_seg, target_pe, source_addr, tidx, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixget_nb) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               ptrdiff_t *sidx,
+               uint64_t nelems,
+               dmapp_type_t type,
+               dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixget_nb) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               ptrdiff_t *sidx,
+               uint64_t nelems,
+               dmapp_type_t type,
+               dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_ixget_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixget_nb)(target_addr, source_addr, source_seg, source_pe, sidx, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixget_nbi) ( void *target_addr,
+                void *source_addr,
+                dmapp_seg_desc_t *source_seg,
+                dmapp_pe_t source_pe,
+                ptrdiff_t *sidx,
+                uint64_t nelems,
+                dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixget_nbi) ( void *target_addr,
+                void *source_addr,
+                dmapp_seg_desc_t *source_seg,
+                dmapp_pe_t source_pe,
+                ptrdiff_t *sidx,
+                uint64_t nelems,
+                dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_ixget_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixget_nbi)(target_addr, source_addr, source_seg, source_pe, sidx, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_ixget) ( void *target_addr,
+            void *source_addr,
+            dmapp_seg_desc_t *source_seg,
+            dmapp_pe_t source_pe,
+            ptrdiff_t *sidx,
+            uint64_t nelems,
+            dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_ixget) ( void *target_addr,
+            void *source_addr,
+            dmapp_seg_desc_t *source_seg,
+            dmapp_pe_t source_pe,
+            ptrdiff_t *sidx,
+            uint64_t nelems,
+            dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_ixget\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_ixget)(target_addr, source_addr, source_seg, source_pe, sidx, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_ixpe_nb) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t *target_pe_list,
+                  uint32_t num_target_pes,
+                  void *source_addr,
+                  uint64_t nelems,
+                  dmapp_type_t type,
+                  dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_ixpe_nb) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t *target_pe_list,
+                  uint32_t num_target_pes,
+                  void *source_addr,
+                  uint64_t nelems,
+                  dmapp_type_t type,
+                  dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_put_ixpe_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_ixpe_nb)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_ixpe_nbi) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t *target_pe_list,
+                   uint32_t num_target_pes,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_ixpe_nbi) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t *target_pe_list,
+                   uint32_t num_target_pes,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_put_ixpe_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_ixpe_nbi)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_put_ixpe) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t *target_pe_list,
+               uint32_t num_target_pes,
+               void *source_addr,
+               uint64_t nelems,
+               dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_put_ixpe) ( void *target_addr,
+               dmapp_seg_desc_t *target_seg,
+               dmapp_pe_t *target_pe_list,
+               uint32_t num_target_pes,
+               void *source_addr,
+               uint64_t nelems,
+               dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_put_ixpe\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_put_ixpe)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_scatter_ixpe_nb) ( void *target_addr,
+                      dmapp_seg_desc_t *target_seg,
+                      dmapp_pe_t *target_pe_list,
+                      uint32_t num_target_pes,
+                      void *source_addr,
+                      uint64_t nelems,
+                      dmapp_type_t type,
+                      dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_scatter_ixpe_nb) ( void *target_addr,
+                      dmapp_seg_desc_t *target_seg,
+                      dmapp_pe_t *target_pe_list,
+                      uint32_t num_target_pes,
+                      void *source_addr,
+                      uint64_t nelems,
+                      dmapp_type_t type,
+                      dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_scatter_ixpe_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_scatter_ixpe_nb)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_scatter_ixpe_nbi) ( void *target_addr,
+                       dmapp_seg_desc_t *target_seg,
+                       dmapp_pe_t *target_pe_list,
+                       uint32_t num_target_pes,
+                       void *source_addr,
+                       uint64_t nelems,
+                       dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_scatter_ixpe_nbi) ( void *target_addr,
+                       dmapp_seg_desc_t *target_seg,
+                       dmapp_pe_t *target_pe_list,
+                       uint32_t num_target_pes,
+                       void *source_addr,
+                       uint64_t nelems,
+                       dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_scatter_ixpe_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_scatter_ixpe_nbi)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_scatter_ixpe) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t *target_pe_list,
+                   uint32_t num_target_pes,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_scatter_ixpe) ( void *target_addr,
+                   dmapp_seg_desc_t *target_seg,
+                   dmapp_pe_t *target_pe_list,
+                   uint32_t num_target_pes,
+                   void *source_addr,
+                   uint64_t nelems,
+                   dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_scatter_ixpe\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_scatter_ixpe)(target_addr, target_seg, target_pe_list, num_target_pes, source_addr, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_gather_ixpe_nb) ( void *target_addr,
+                     void *source_addr,
+                     dmapp_seg_desc_t *source_seg,
+                     dmapp_pe_t *source_pe_list,
+                     uint32_t num_source_pes,
+                     uint64_t nelems,
+                     dmapp_type_t type,
+                     dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_gather_ixpe_nb) ( void *target_addr,
+                     void *source_addr,
+                     dmapp_seg_desc_t *source_seg,
+                     dmapp_pe_t *source_pe_list,
+                     uint32_t num_source_pes,
+                     uint64_t nelems,
+                     dmapp_type_t type,
+                     dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_gather_ixpe_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_gather_ixpe_nb)(target_addr, source_addr, source_seg, source_pe_list, num_source_pes, nelems, type, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_gather_ixpe_nbi) ( void *target_addr,
+                      void *source_addr,
+                      dmapp_seg_desc_t *source_seg,
+                      dmapp_pe_t *source_pe_list,
+                      uint32_t num_source_pes,
+                      uint64_t nelems,
+                      dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_gather_ixpe_nbi) ( void *target_addr,
+                      void *source_addr,
+                      dmapp_seg_desc_t *source_seg,
+                      dmapp_pe_t *source_pe_list,
+                      uint32_t num_source_pes,
+                      uint64_t nelems,
+                      dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_gather_ixpe_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_gather_ixpe_nbi)(target_addr, source_addr, source_seg, source_pe_list, num_source_pes, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_gather_ixpe) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t *source_pe_list,
+                  uint32_t num_source_pes,
+                  uint64_t nelems,
+                  dmapp_type_t type) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_gather_ixpe) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t *source_pe_list,
+                  uint32_t num_source_pes,
+                  uint64_t nelems,
+                  dmapp_type_t type) {
+	 if (myRank == 0) printf("dmapp_gather_ixpe\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_gather_ixpe)(target_addr, source_addr, source_seg, source_pe_list, num_source_pes, nelems, type);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aadd_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aadd_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_aadd_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aadd_qw_nb)(target_addr, target_seg, target_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aadd_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aadd_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aadd_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aadd_qw_nbi)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aadd_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aadd_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aadd_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aadd_qw)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aand_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aand_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_aand_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aand_qw_nb)(target_addr, target_seg, target_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aand_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aand_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aand_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aand_qw_nbi)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aand_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aand_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aand_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aand_qw)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aor_qw_nb) ( void *target_addr,
+                dmapp_seg_desc_t *target_seg,
+                dmapp_pe_t target_pe,
+                int64_t operand,
+                dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aor_qw_nb) ( void *target_addr,
+                dmapp_seg_desc_t *target_seg,
+                dmapp_pe_t target_pe,
+                int64_t operand,
+                dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_aor_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aor_qw_nb)(target_addr, target_seg, target_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aor_qw_nbi) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aor_qw_nbi) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aor_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aor_qw_nbi)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_aor_qw) ( void *target_addr,
+             dmapp_seg_desc_t *target_seg,
+             dmapp_pe_t target_pe,
+             int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_aor_qw) ( void *target_addr,
+             dmapp_seg_desc_t *target_seg,
+             dmapp_pe_t target_pe,
+             int64_t operand) {
+	 if (myRank == 0) printf("dmapp_aor_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_aor_qw)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_axor_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_axor_qw_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_axor_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_axor_qw_nb)(target_addr, target_seg, target_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_axor_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_axor_qw_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  int64_t operand) {
+	 if (myRank == 0) printf("dmapp_axor_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_axor_qw_nbi)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_axor_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_axor_qw) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              int64_t operand) {
+	 if (myRank == 0) printf("dmapp_axor_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_axor_qw)(target_addr, target_seg, target_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afadd_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afadd_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_afadd_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afadd_qw_nb)(target_addr, source_addr, source_seg, source_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afadd_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afadd_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afadd_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afadd_qw_nbi)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afadd_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afadd_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afadd_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afadd_qw)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afand_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afand_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_afand_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afand_qw_nb)(target_addr, source_addr, source_seg, source_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afand_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afand_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afand_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afand_qw_nbi)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afand_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afand_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afand_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afand_qw)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afxor_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afxor_qw_nb) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand,
+                  dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_afxor_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afxor_qw_nb)(target_addr, source_addr, source_seg, source_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afxor_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afxor_qw_nbi) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afxor_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afxor_qw_nbi)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afxor_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afxor_qw) ( void *target_addr,
+               void *source_addr,
+               dmapp_seg_desc_t *source_seg,
+               dmapp_pe_t source_pe,
+               int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afxor_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afxor_qw)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afor_qw_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afor_qw_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 int64_t operand,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_afor_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afor_qw_nb)(target_addr, source_addr, source_seg, source_pe, operand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afor_qw_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afor_qw_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afor_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afor_qw_nbi)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afor_qw) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              int64_t operand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afor_qw) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              int64_t operand) {
+	 if (myRank == 0) printf("dmapp_afor_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afor_qw)(target_addr, source_addr, source_seg, source_pe, operand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afax_qw_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 int64_t andMask,
+                 int64_t xorMask,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afax_qw_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 int64_t andMask,
+                 int64_t xorMask,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_afax_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afax_qw_nb)(target_addr, source_addr, source_seg, source_pe, andMask, xorMask, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afax_qw_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t andMask,
+                  int64_t xorMask) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afax_qw_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  int64_t andMask,
+                  int64_t xorMask) {
+	 if (myRank == 0) printf("dmapp_afax_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afax_qw_nbi)(target_addr, source_addr, source_seg, source_pe, andMask, xorMask);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_afax_qw) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              int64_t andMask,
+              int64_t xorMask) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_afax_qw) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              int64_t andMask,
+              int64_t xorMask) {
+	 if (myRank == 0) printf("dmapp_afax_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_afax_qw)(target_addr, source_addr, source_seg, source_pe, andMask, xorMask);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_acswap_qw_nb) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t comperand,
+                   int64_t swaperand,
+                   dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_acswap_qw_nb) ( void *target_addr,
+                   void *source_addr,
+                   dmapp_seg_desc_t *source_seg,
+                   dmapp_pe_t source_pe,
+                   int64_t comperand,
+                   int64_t swaperand,
+                   dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_acswap_qw_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_acswap_qw_nb)(target_addr, source_addr, source_seg, source_pe, comperand, swaperand, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_acswap_qw_nbi) ( void *target_addr,
+                    void *source_addr,
+                    dmapp_seg_desc_t *source_seg,
+                    dmapp_pe_t source_pe,
+                    int64_t comperand,
+                    int64_t swaperand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_acswap_qw_nbi) ( void *target_addr,
+                    void *source_addr,
+                    dmapp_seg_desc_t *source_seg,
+                    dmapp_pe_t source_pe,
+                    int64_t comperand,
+                    int64_t swaperand) {
+	 if (myRank == 0) printf("dmapp_acswap_qw_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_acswap_qw_nbi)(target_addr, source_addr, source_seg, source_pe, comperand, swaperand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_acswap_qw) ( void *target_addr,
+                void *source_addr,
+                dmapp_seg_desc_t *source_seg,
+                dmapp_pe_t source_pe,
+                int64_t comperand,
+                int64_t swaperand) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_acswap_qw) ( void *target_addr,
+                void *source_addr,
+                dmapp_seg_desc_t *source_seg,
+                dmapp_pe_t source_pe,
+                int64_t comperand,
+                int64_t swaperand) {
+	 if (myRank == 0) printf("dmapp_acswap_qw\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_acswap_qw)(target_addr, source_addr, source_seg, source_pe, comperand, swaperand);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_lock_acquire) ( dmapp_lock_desc_t *lock_addr,
+     dmapp_seg_desc_t *lock_seg,
+     dmapp_pe_t lock_host,
+     uint64_t flags,
+                   dmapp_lock_handle_t *handle) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_lock_acquire) ( dmapp_lock_desc_t *lock_addr,
+     dmapp_seg_desc_t *lock_seg,
+     dmapp_pe_t lock_host,
+     uint64_t flags,
+                   dmapp_lock_handle_t *handle) {
+	 if (myRank == 0) printf("dmapp_lock_acquire\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_lock_acquire)(lock_addr, lock_seg, lock_host, flags, handle);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_lock_try) ( dmapp_lock_desc_t *lock_addr,
+               dmapp_seg_desc_t *lock_seg,
+               dmapp_pe_t lock_host,
+               uint64_t flags,
+               dmapp_lock_handle_t *handle) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_lock_try) ( dmapp_lock_desc_t *lock_addr,
+               dmapp_seg_desc_t *lock_seg,
+               dmapp_pe_t lock_host,
+               uint64_t flags,
+               dmapp_lock_handle_t *handle) {
+	 if (myRank == 0) printf("dmapp_lock_try\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_lock_try)(lock_addr, lock_seg, lock_host, flags, handle);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_lock_release) ( dmapp_lock_handle_t handle,
+     uint64_t flags) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_lock_release) ( dmapp_lock_handle_t handle,
+     uint64_t flags) {
+	 if (myRank == 0) printf("dmapp_lock_release\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_lock_release)(handle, flags);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_lock_release_addr) ( dmapp_lock_desc_t *lock_addr,
+                        dmapp_pe_t lock_host,
+                        uint64_t flags) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_lock_release_addr) ( dmapp_lock_desc_t *lock_addr,
+                        dmapp_pe_t lock_host,
+                        uint64_t flags) {
+	 if (myRank == 0) printf("dmapp_lock_release_addr\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_lock_release_addr)(lock_addr, lock_host, flags);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_sheap_stats) (dmapp_sheap_stats_t *stats) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_sheap_stats) (dmapp_sheap_stats_t *stats) {
+	 if (myRank == 0) printf("dmapp_sheap_stats\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_sheap_stats)(stats);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_mem_register) ( void *addr,
+                   uint64_t length,
+                   dmapp_seg_desc_t *seg_desc) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_mem_register) ( void *addr,
+                   uint64_t length,
+                   dmapp_seg_desc_t *seg_desc) {
+	 if (myRank == 0) printf("dmapp_mem_register\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_mem_register)(addr, length, seg_desc);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_mem_unregister) ( dmapp_seg_desc_t *seg_desc) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_mem_unregister) ( dmapp_seg_desc_t *seg_desc) {
+	 if (myRank == 0) printf("dmapp_mem_unregister\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_mem_unregister)(seg_desc);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_segdesc_compare) ( dmapp_seg_desc_t *seg_desc1,
+                      dmapp_seg_desc_t *seg_desc2,
+                      int *flag) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_segdesc_compare) ( dmapp_seg_desc_t *seg_desc1,
+                      dmapp_seg_desc_t *seg_desc2,
+                      int *flag) {
+	 if (myRank == 0) printf("dmapp_segdesc_compare\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_segdesc_compare)(seg_desc1, seg_desc2, flag);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_mem_reserve) ( void *addr,
+                  uint64_t length,
+                  uint64_t flags,
+                  dmapp_seg_desc_t *seg_desc) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_mem_reserve) ( void *addr,
+                  uint64_t length,
+                  uint64_t flags,
+                  dmapp_seg_desc_t *seg_desc) {
+	 if (myRank == 0) printf("dmapp_mem_reserve\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_mem_reserve)(addr, length, flags, seg_desc);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_mem_update) ( void *addr,
+                 uint64_t length,
+                 uint64_t flags,
+                 dmapp_seg_desc_t *seg_desc) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_mem_update) ( void *addr,
+                 uint64_t length,
+                 uint64_t flags,
+                 dmapp_seg_desc_t *seg_desc) {
+	 if (myRank == 0) printf("dmapp_mem_update\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_mem_update)(addr, length, flags, seg_desc);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_checkpoint) (void) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_checkpoint) (void) {
+	 if (myRank == 0) printf("dmapp_checkpoint\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_checkpoint)();
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_restart) ( uint32_t restart_modes) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_restart) ( uint32_t restart_modes) {
+	 if (myRank == 0) printf("dmapp_restart\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_restart)(restart_modes);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_progress) (void) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_progress) (void) {
+	 if (myRank == 0) printf("dmapp_progress\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_progress)();
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_c_pset_create) ( dmapp_c_pset_desc_t *pdesc,
+                    uint64_t identifier,
+                    uint64_t modes,
+                    dmapp_c_pset_attrs_t *attrs,
+                    dmapp_c_pset_handle_t *pset_hndl) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_c_pset_create) ( dmapp_c_pset_desc_t *pdesc,
+                    uint64_t identifier,
+                    uint64_t modes,
+                    dmapp_c_pset_attrs_t *attrs,
+                    dmapp_c_pset_handle_t *pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_create\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_create)(pdesc, identifier, modes, attrs, pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_pset_export) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_pset_export) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_export\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_export)(pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_pset_destroy) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_pset_destroy) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_destroy\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_destroy)(pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_barrier_join) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_barrier_join) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_barrier_join\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_barrier_join)(pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_greduce_start) ( dmapp_c_pset_handle_t pset,
+                                            void *in,
+                                            void *out,
+                                            uint32_t nelems,
+                                            dmapp_c_type_t type,
+                                            dmapp_c_op_t op) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_greduce_start) ( dmapp_c_pset_handle_t pset,
+                                            void *in,
+                                            void *out,
+                                            uint32_t nelems,
+                                            dmapp_c_type_t type,
+                                            dmapp_c_op_t op) {
+	 if (myRank == 0) printf("dmapp_c_greduce_start\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_greduce_start)(pset, in, out, nelems, type, op);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_greduce_nelems_max) ( dmapp_c_type_t type,
+                                                 uint32_t *nelems_max) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_greduce_nelems_max) ( dmapp_c_type_t type,
+                                                 uint32_t *nelems_max) {
+	 if (myRank == 0) printf("dmapp_c_greduce_nelems_max\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_greduce_nelems_max)(type, nelems_max);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_pset_test) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_pset_test) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_test\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_test)(pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_pset_wait) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_pset_wait) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_wait\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_wait)(pset_hndl);
+}
+extern dmapp_return_t  REAL_FUNCTION(dmapp_c_pset_cancel_op) ( dmapp_c_pset_handle_t pset_hndl) ;
+dmapp_return_t  WRAPPED_FUNCTION(dmapp_c_pset_cancel_op) ( dmapp_c_pset_handle_t pset_hndl) {
+	 if (myRank == 0) printf("dmapp_c_pset_cancel_op\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_c_pset_cancel_op)(pset_hndl);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_put) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              dmapp_amo_t *amo) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_put) ( void *target_addr,
+              dmapp_seg_desc_t *target_seg,
+              dmapp_pe_t target_pe,
+              dmapp_amo_t *amo) {
+	 if (myRank == 0) printf("dmapp_amo_put\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_put)(target_addr, target_seg, target_pe, amo);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_put_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 dmapp_amo_t *amo,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_put_nb) ( void *target_addr,
+                 dmapp_seg_desc_t *target_seg,
+                 dmapp_pe_t target_pe,
+                 dmapp_amo_t *amo,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_amo_put_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_put_nb)(target_addr, target_seg, target_pe, amo, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_put_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  dmapp_amo_t *amo) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_put_nbi) ( void *target_addr,
+                  dmapp_seg_desc_t *target_seg,
+                  dmapp_pe_t target_pe,
+                  dmapp_amo_t *amo) {
+	 if (myRank == 0) printf("dmapp_amo_put_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_put_nbi)(target_addr, target_seg, target_pe, amo);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_get) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              dmapp_amo_t *amo) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_get) ( void *target_addr,
+              void *source_addr,
+              dmapp_seg_desc_t *source_seg,
+              dmapp_pe_t source_pe,
+              dmapp_amo_t *amo) {
+	 if (myRank == 0) printf("dmapp_amo_get\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_get)(target_addr, source_addr, source_seg, source_pe, amo);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_get_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 dmapp_amo_t *amo,
+                 dmapp_syncid_handle_t *syncid) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_get_nb) ( void *target_addr,
+                 void *source_addr,
+                 dmapp_seg_desc_t *source_seg,
+                 dmapp_pe_t source_pe,
+                 dmapp_amo_t *amo,
+                 dmapp_syncid_handle_t *syncid) {
+	 if (myRank == 0) printf("dmapp_amo_get_nb\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_get_nb)(target_addr, source_addr, source_seg, source_pe, amo, syncid);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_get_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  dmapp_amo_t *amo) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_get_nbi) ( void *target_addr,
+                  void *source_addr,
+                  dmapp_seg_desc_t *source_seg,
+                  dmapp_pe_t source_pe,
+                  dmapp_amo_t *amo) {
+	 if (myRank == 0) printf("dmapp_amo_get_nbi\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_get_nbi)(target_addr, source_addr, source_seg, source_pe, amo);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_amo_flush) ( dmapp_pe_t target_pe, uint64_t flags) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_amo_flush) ( dmapp_pe_t target_pe, uint64_t flags) {
+	 if (myRank == 0) printf("dmapp_amo_flush\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_amo_flush)(target_pe, flags);
+}
+extern dmapp_return_t
+ REAL_FUNCTION(dmapp_queue_put) ( dmapp_queue_handle_t queue_hndl,
+  void *source,
+  uint64_t nelems,
+  dmapp_type_t type,
+  dmapp_pe_t target_pe,
+  uint64_t flags) ;
+dmapp_return_t
+ WRAPPED_FUNCTION(dmapp_queue_put) ( dmapp_queue_handle_t queue_hndl,
+  void *source,
+  uint64_t nelems,
+  dmapp_type_t type,
+  dmapp_pe_t target_pe,
+  uint64_t flags) {
+	 if (myRank == 0) printf("dmapp_queue_put\n");
+	 gAccessedRemoteData = true;
+	 return REAL_FUNCTION(dmapp_queue_put)(queue_hndl, source, nelems, type, target_pe, flags);
+}
+
+extern int REAL_FUNCTION(MPI_Barrier)(MPI_Comm comm);
+
+extern void REAL_FUNCTION(pnga_access_ptr) (int g_a, int lo[], int hi[], void* ptr, int ld[]) ;
+void WRAPPED_FUNCTION(pnga_access_ptr) (int g_a, int lo[], int hi[], void* ptr, int ld[]) {
+	 if (myRank == 0) printf("pnga_access_ptr\n");
+	 gAccessedRemoteData = true;
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+	 REAL_FUNCTION(pnga_access_ptr)(g_a, lo, hi, ptr, ld);
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+}
+extern void REAL_FUNCTION(pnga_access_block_segment_ptr) (int g_a, int proc, void* ptr, int *len) ;
+void WRAPPED_FUNCTION(pnga_access_block_segment_ptr) (int g_a, int proc, void* ptr, int *len) {
+	 if (myRank == 0) printf("pnga_access_block_segment_ptr\n");
+	 gAccessedRemoteData = true;
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+	 REAL_FUNCTION(pnga_access_block_segment_ptr)(g_a, proc, ptr, len);
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+}
+extern void REAL_FUNCTION(ga_zero_) (int g_a) ;
+void WRAPPED_FUNCTION(ga_zero_) (int g_a) {
+	 if (myRank == 0) printf("ga_zero_\n");
+	 gDisableAnalysis += 1;
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+	 REAL_FUNCTION(ga_zero_)(g_a);
+         REAL_FUNCTION(MPI_Barrier(MPI_COMM_WORLD));
+	 gDisableAnalysis -= 1;
+}
+}
